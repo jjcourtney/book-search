@@ -68,28 +68,29 @@ const resolvers = {
             }
             throw new AuthenticationError("Login to complete action");
         },
-    },
-    login: async (_, { email, password }) => {
 
-        const user = await User.findOne({ email });
+        login: async (_, { email, password }) => {
 
-        if (!user) {
-            throw new AuthenticationError("Login Failed");
+            const user = await User.findOne({ email });
+
+            if (!user) {
+                throw new AuthenticationError("Login Failed");
+            }
+
+            const correctPassword = await user.isCorrectPassword(password);
+
+            if (!correctPassword) {
+                throw new AuthenticationError("Login Failed");
+            }
+
+            const token = signToken(user);
+
+            return {
+                token,
+                user
+            };
         }
-
-        const correctPassword = await user.isCorrectPassword(password);
-
-        if (!correctPassword) {
-            throw new AuthenticationError("Login Failed");
-        }
-
-        const token = signToken(user);
-
-        return {
-            token,
-            user
-        };
-    },
+    }
 }
 
 
