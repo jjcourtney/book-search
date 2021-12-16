@@ -38,7 +38,7 @@ const resolvers = {
             if (user) {
                 return await User.findOneAndUpdate(
                     {
-                        _id: user._id
+                        bookId: user._id
                     },
                     {
                         $addToSet: {
@@ -53,7 +53,7 @@ const resolvers = {
             }
             throw new AuthenticationError("Login first to add a book!");
         },
-        deleteBook: async (_, { bookId }, { user }) => {
+        removeBook: async (_, { bookId }, { user }) => {
 
             if (user) {
                 return await User.findOneAndUpdate(

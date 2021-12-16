@@ -7,7 +7,7 @@ export const getSingleUserQuery = gql`
       username
       email
       savedBooks {
-        _id
+        bookId
         authors
         description
         image
@@ -34,9 +34,6 @@ export const createUserMutation = gql`
 export const saveBookMutation = gql`
   mutation saveBook($bookToSave: BookToSave!) {
     saveBook(book: $bookToSave) {
-      _id
-      username
-      email
       savedBooks {
         authors
         description
@@ -49,9 +46,9 @@ export const saveBookMutation = gql`
   }
 `;
 
-export const deleteBookMutation = gql`
-  mutation deleteBook($bookId: String!) {
-    deleteBook(bookId: $bookId) {
+export const removeBookMutation = gql`
+  mutation removeBook($bookId: String!) {
+    removeBook(bookId: $bookId) {
       _id
       username
       email
@@ -76,7 +73,7 @@ export const loginMutation = gql`
         username
         email
         savedBooks {
-          _id
+          bookId
           authors
           description
           image
