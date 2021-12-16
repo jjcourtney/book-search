@@ -76,9 +76,9 @@ export const loginMutation = gql`
         username
         email
         savedBooks {
+          _id
           authors
           description
-          bookId
           image
           link
           title
