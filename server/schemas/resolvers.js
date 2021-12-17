@@ -5,7 +5,7 @@ const { User } = require("../models");
 
 const resolvers = {
     Query: {
-        getSingleUser: async (_, args, { user }) => {
+        me: async (_, args, { user }) => {
             if (user) {
                 return User.findOne({
                     _id: user._id
@@ -36,9 +36,11 @@ const resolvers = {
         saveBook: async (_, { book }, { user }) => {
 
             if (user) {
-                return await User.findOneAndUpdate(
+
+
+                const newBook = await User.findOneAndUpdate(
                     {
-                        bookId: user._id
+                        _id: user._id
                     },
                     {
                         $addToSet: {
@@ -50,6 +52,8 @@ const resolvers = {
                         runValidators: true
                     }
                 );
+                console.log(newBook)
+                return newBook
             }
             throw new AuthenticationError("Login first to add a book!");
         },
