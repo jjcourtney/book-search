@@ -37,8 +37,7 @@ const resolvers = {
 
             if (user) {
 
-
-                const newBook = await User.findOneAndUpdate(
+                return await User.findOneAndUpdate(
                     {
                         _id: user._id
                     },
@@ -52,8 +51,6 @@ const resolvers = {
                         runValidators: true
                     }
                 );
-                console.log(newBook)
-                return newBook
             }
             throw new AuthenticationError("Login first to add a book!");
         },
