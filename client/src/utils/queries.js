@@ -19,14 +19,12 @@ export const GET_ME = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!){
-    addUser(username: $username, email: $email, password: $password){
+  mutation addUser($username: String!, $email: String!, $password: String!) {
+    addUser(username: $username, email: $email, password: $password) {
       token
-      user{
+      user {
         _id
-        email
         username
-
       }
     }
   }
@@ -75,15 +73,6 @@ export const LOGIN_USER = gql`
       user {
         _id
         username
-        email
-        savedBooks {
-          authors
-          description
-          bookId
-          image
-          link
-          title
-        }
       }
     }
   }
