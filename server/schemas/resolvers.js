@@ -16,7 +16,7 @@ const resolvers = {
     },
 
     Mutation: {
-        createUser: async (_, {
+        addUser: async (_, {
             username,
             email,
             password
