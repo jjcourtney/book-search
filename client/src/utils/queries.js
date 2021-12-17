@@ -14,18 +14,19 @@ export const meQuery = gql`
         link
         title
       }
-   }
+  }
   }
 `;
 
 export const createUserMutation = gql`
-  mutation createUser($email: String!, $password: String!, $username: String!) {
-    createUser(email: $email, password: $password, username: $username) {
+  mutation addUser($username: String!, $email: String!, $password: String!){
+    addUser(username: $username, email: $email, password: $password){
       token
-      user {
+      user{
         _id
+        email
         username
-        password
+
       }
     }
   }
@@ -34,10 +35,13 @@ export const createUserMutation = gql`
 export const saveBookMutation = gql`
   mutation saveBook($bookToSave: BookToSave!) {
     saveBook(book: $bookToSave) {
+      _id
+      email
+      username
       savedBooks {
+        bookId
         authors
         description
-        bookId
         image
         link
         title
@@ -50,15 +54,15 @@ export const removeBookMutation = gql`
   mutation removeBook($bookId: String!) {
     removeBook(bookId: $bookId) {
       _id
-      username
       email
-      savedBooks {
+      username
+      savedBooks{
+        bookId
         authors
         description
-        bookId
         image
-        link
         title
+        link
       }
     }
   }
@@ -73,9 +77,9 @@ export const loginMutation = gql`
         username
         email
         savedBooks {
-          bookId
           authors
           description
+          bookId
           image
           link
           title
