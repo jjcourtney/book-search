@@ -49,6 +49,8 @@ https://github.com/jjcourtney/
 
 ## Screenshots
 
+![fav](./assets/fav.png)
+![saved](./assets/saved.png)
 ![adduser](./assets/adduser.png)
 ![login](./assets/login.png)
 ![me](./assets/me.png)
