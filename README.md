@@ -2,7 +2,7 @@
 
 ## Description
 
-A google book search with graphQL and mongoDB
+A google book search with graphQL and mongoDB. The tast was to refactor the code to use graphQL instead of a REST api.
 
 ## Deployment
 
